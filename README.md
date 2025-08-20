@@ -35,12 +35,13 @@ Real-Time Cybersecurity is an advanced Python-based cybersecurity assessment too
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/NARAYANASWAMY-ACHINTYA/Real-Time-Cybersecurity-Using-AIML.git
+git clone https://github.com/NARAYANASWAMY-ACHINTYA/REAL-TIME-CYBERSECURITY-FOR-WEB-APPLICATIONS-USING-AIML.git
 ```
 
 2. Navigate to the project directory:
 ```bash
-cd Real-Time-Cybersecurity-Using-AIML
+cd REAL-TIME-CYBERSECURITY-FOR-WEB-APPLICATIONS-USING-AIML
+
 ```
 
 3. Install dependencies:
@@ -84,6 +85,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 🔗 Links
 
-- GitHub Repository: [Real-Time-Cybersecurity-Using-AIML](https://github.com/NARAYANASWAMY-ACHINTYA/Real-Time-Cybersecurity-Using-AIML)
+- GitHub Repository: [REAL-TIME-CYBERSECURITY-FOR-WEB-APPLICATIONS-USING-AIML
+](https://github.com/NARAYANASWAMY-ACHINTYA/REAL-TIME-CYBERSECURITY-FOR-WEB-APPLICATIONS-USING-AIML)
 
 #cybersecurity #ethicalhacking #python #websecurity #machinelearning
