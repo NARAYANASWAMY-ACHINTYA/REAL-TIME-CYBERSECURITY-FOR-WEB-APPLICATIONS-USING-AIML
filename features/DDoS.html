@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDoS Protection Dashboard</title>
+    <style>
+        .dashboard {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .status-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .alert {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .alert-danger {
+            background-color: #ffe6e6;
+            border: 1px solid #ff9999;
+            color: #cc0000;
+        }
+        .alert-success {
+            background-color: #e6ffe6;
+            border: 1px solid #99ff99;
+            color: #006600;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>DDoS Protection Dashboard</h1>
+        
+        <div class="status-card">
+            <h2>Protection Status</h2>
+            <label class="switch">
+                <input type="checkbox" id="protectionToggle">
+                <span class="slider"></span>
+            </label>
+            <span id="protectionStatus">Protection Disabled</span>
+        </div>
+
+        <div id="alertArea"></div>
+
+        <div class="stats">
+            <div class="status-card">
+                <h3>Current Traffic</h3>
+                <p id="currentTraffic">0 requests/sec</p>
+            </div>
+            <div class="status-card">
+                <h3>Blocked IPs</h3>
+                <p id="blockedIPs">0</p>
+            </div>
+            <div class="status-card">
+                <h3>Attack Status</h3>
+                <p id="attackStatus">No attacks detected</p>
+            </div>
+        </div>
+
+        <div class="status-card">
+            <h2>Recent Events</h2>
+            <div id="eventLog"></div>
+        </div>
+    </div>
+
+    <script>
+        class DDoSProtection {
+            constructor() {
+                this.isEnabled = false;
+                this.threshold = 100; // requests per second threshold
+                this.setupEventListeners();
+                this.startMonitoring();
+            }
+
+            setupEventListeners() {
+                const toggle = document.getElementById('protectionToggle');
+                toggle.addEventListener('change', (e) => {
+                    this.isEnabled = e.target.checked;
+                    document.getElementById('protectionStatus').textContent = 
+                        this.isEnabled ? 'Protection Enabled' : 'Protection Disabled';
+                    
+                    if (this.isEnabled) {
+                        this.showAlert('DDoS protection is now active', 'success');
+                    } else {
+                        this.showAlert('Warning: DDoS protection is disabled', 'danger');
+                    }
+                });
+            }
+
+            showAlert(message, type) {
+                const alertArea = document.getElementById('alertArea');
+                const alert = document.createElement('div');
+                alert.className = `alert alert-${type}`;
+                alert.textContent = message;
+                alertArea.innerHTML = '';
+                alertArea.appendChild(alert);
+            }
+
+            logEvent(event) {
+                const eventLog = document.getElementById('eventLog');
+                const eventElement = document.createElement('p');
+                eventElement.textContent = `${new Date().toLocaleTimeString()}: ${event}`;
+                eventLog.insertBefore(eventElement, eventLog.firstChild);
+            }
+
+            async startMonitoring() {
+                while (true) {
+                    if (this.isEnabled) {
+                        try {
+                            const response = await fetch('/api/ddos/stats');
+                            const stats = await response.json();
+                            
+                            this.updateDashboard(stats);
+                            
+                            if (stats.underAttack) {
+                                this.showAlert('DDoS Attack Detected! Mitigation measures active', 'danger');
+                            }
+                        } catch (error) {
+                            console.error('Error fetching stats:', error);
+                        }
+                    }
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                }
+            }
+
+            updateDashboard(stats) {
+                document.getElementById('currentTraffic').textContent = 
+                    `${stats.requestsPerSecond} requests/sec`;
+                document.getElementById('blockedIPs').textContent = 
+                    stats.blockedIPs;
+                document.getElementById('attackStatus').textContent = 
+                    stats.underAttack ? 'Under Attack' : 'Normal';
+            }
+        }
+
+        // Initialize protection when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new DDoSProtection();
+        });
+    </script>
+</body>
+</html> 

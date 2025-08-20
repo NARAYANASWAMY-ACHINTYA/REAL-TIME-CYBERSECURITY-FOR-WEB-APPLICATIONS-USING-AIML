@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-Time Cybersecurity - Advanced AI-Powered Phishing Detection" />
+    <meta name="author" content="Real-Time Cybersecurity Team" />
+    <title>Phishing Detection - Real-Time Cybersecurity</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --dark-color: #1a1b26;
+            --light-color: #f8f9fa;
+            --success-color: #4caf50;
+            --warning-color: #ff9800;
+            --danger-color: #f44336;
+            --text-color: #333;
+            --text-light: #6c757d;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            padding: 1rem 0;
+            transition: var(--transition);
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-color);
+            margin: 0 0.5rem;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 8rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Analysis Section */
+        .analysis-section {
+            padding: 4rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .analysis-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            margin-bottom: 2rem;
+        }
+        
+        .analysis-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .url-form {
+            margin-bottom: 2rem;
+        }
+        
+        .url-form .form-control {
+            height: 3.5rem;
+            font-size: 1.1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px 0 0 10px;
+            transition: var(--transition);
+        }
+        
+        .url-form .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: none;
+        }
+        
+        .url-form .btn {
+            border-radius: 0 10px 10px 0;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            background: var(--primary-color);
+            border: none;
+        }
+        
+        .url-form .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: var(--light-color);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: var (--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var (--dark-color);
+        }
+
+        /* Monitor Section */
+        .monitor-section {
+            padding: 4rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .log-container {
+            background: var(--dark-color);
+            border-radius: 15px;
+            padding: 1.5rem;
+            height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+        
+        .log-entry {
+            padding: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+
+        /* Result Message */
+        .result-message {
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+        
+        .result-message.bg-danger {
+            background: linear-gradient(135deg, var(--danger-color), #d32f2f) !important;
+        }
+        
+        .result-message.bg-success {
+            background: linear-gradient(135deg, var(--success-color), #388e3c) !important;
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 991.98px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .hero {
+                padding: 6rem 0 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stat-card {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">Real-Time Cybersecurity</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('project') }}">Project</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Team</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="fade-in">AI-Powered Phishing Detection</h1>
+                    <p class="fade-in">Protect your users from sophisticated phishing attacks with our advanced machine learning analysis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analysis Section -->
+    <section class="analysis-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="analysis-card fade-in">
+                        <h2 class="text-center mb-4">URL Analysis</h2>
+                        <form method="POST" action="{{ url_for('ANN') }}" class="url-form">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="url" class="form-control" id="Link" name="Link" 
+                                           placeholder="Enter URL to analyze (e.g., https://example.com)" 
+                                           required value="{{ url if url }}">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-search me-2"></i>Analyze
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        {% if error %}
+                        <div class="alert alert-danger fade-in" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i>{{ error }}
+                        </div>
+                        {% endif %}
+
+                        {% if res %}
+                        <div class="result-message fade-in p-4 {% if 'UNSAFE' in res %}bg-danger{% else %}bg-success{% endif %} text-white">
+                            <div class="d-flex align-items-center">
+                                <span class="fs-4 me-3">{{ '⚠️' if 'UNSAFE' in res else '✅' }}</span>
+                                <div>
+                                    <h4 class="mb-2">Analysis Result</h4>
+                                    <p class="mb-0">{{ res }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if loading %}
+                        <div class="text-center mt-4 fade-in">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Analyzing...</span>
+                            </div>
+                            <p class="mt-2">Analyzing URL for potential threats...</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="text-center mb-5 fade-in">Detection Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">Neural Network Analysis</h3>
+                    <p>Advanced deep learning model trained on extensive phishing data to identify sophisticated attacks.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3 class="feature-title">URL Pattern Analysis</h3>
+                    <p>Comprehensive examination of URL structures and patterns to detect malicious indicators.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Real-time Analysis</h3>
+                    <p>Instant threat detection with our high-performance machine learning engine.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Multi-factor Detection</h3>
+                    <p>Multiple security indicators analyzed to provide comprehensive threat assessment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-logo">Real-Time Cybersecurity</div>
+                    <p class="footer-description">
+                        Advanced AI & ML-powered web security solutions designed to protect your digital assets in real-time.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://x.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/NARAYANASWAMY-ACHINTYA/Real-Time-Cybersecurity-Using-AIML" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/features">Features</a></li>
+                        <li><a href="{{ url_for('project') }}">Project</a></li>
+                        <li><a href="/contact">Team</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-title">Features</h5>
+                    <ul class="footer-links">
+                        <li><a href="/ANN">Phishing Detection</a></li>
+                        <li><a href="/vulnerability">Vulnerability Scanner</a></li>
+                        <li><a href="/ddos">DDoS Protection</a></li>
+                        <li><a href="/extension">Browser Extension</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="footer-title">Contact Us</h5>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope me-2"></i> info@realtimecybersecurity.com</li>
+                        <li><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Security Street, Cyber City, 12345</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Real-Time Cybersecurity. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fade in elements
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            });
+            
+            fadeElements.forEach(element => observer.observe(element));
+
+            // Function to add log entries
+            function addLogEntry(message, type = 'info') {
+                const logOutput = document.getElementById('logOutput');
+                const entry = document.createElement('div');
+                entry.className = `log-entry text-${type}`;
+                entry.innerHTML = `[${new Date().toLocaleTimeString()}] ${message}`;
+                logOutput.insertBefore(entry, logOutput.firstChild);
+
+                // Keep only last 50 entries
+                while (logOutput.children.length > 50) {
+                    logOutput.removeChild(logOutput.lastChild);
+                }
+            }
+
+            // Update statistics
+            let totalScans = 0;
+            let threatsDetected = 0;
+
+            function updateStats() {
+                document.getElementById('totalScans').textContent = totalScans;
+                document.getElementById('threatsDetected').textContent = threatsDetected;
+            }
+
+            // Form submission handling
+            const analysisForm = document.querySelector('form');
+            if (analysisForm) {
+                analysisForm.addEventListener('submit', function() {
+                    addLogEntry('Starting URL analysis...', 'info');
+                    totalScans++;
+                    updateStats();
+                });
+            }
+
+            // Check if there's a result message
+            const resultMessage = document.querySelector('.result-message');
+            if (resultMessage) {
+                if (resultMessage.classList.contains('bg-danger')) {
+                    addLogEntry('⚠️ Potential phishing threat detected!', 'warning');
+                    threatsDetected++;
+                    updateStats();
+                } else {
+                    addLogEntry('✅ URL analyzed and found safe', 'success');
+                }
+            }
+
+            // Initialize stats
+            updateStats();
+        });
+    </script>
+</body>
+</html>

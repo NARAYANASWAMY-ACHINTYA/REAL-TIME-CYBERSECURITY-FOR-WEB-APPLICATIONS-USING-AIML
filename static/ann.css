@@ -1,0 +1,212 @@
+:root {
+    --primary-color: #2196F3;
+    --primary-dark: #1976D2;
+    --primary-light: #BBDEFB;
+    --accent-color: #FF4081;
+    --success-color: #4CAF50;
+    --danger-color: #f44336;
+    --warning-color: #ff9800;
+    --background-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --card-background: rgba(255, 255, 255, 0.95);
+    --transition-speed: 0.3s;
+}
+
+.phishing-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.phishing-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.phishing-title {
+    color: var(--primary-dark);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.phishing-subtitle {
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.input-section {
+    background: var(--card-background);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease-out;
+}
+
+.url-input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--primary-light);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: all var(--transition-speed);
+}
+
+.url-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.check-button {
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    width: 100%;
+    font-weight: 600;
+}
+
+.check-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+}
+
+.check-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.result-section {
+    background: var(--card-background);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    animation: slideIn 0.5s ease-out;
+}
+
+.result-section.visible {
+    display: block;
+}
+
+.result-card {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: all var(--transition-speed);
+}
+
+.result-card.safe {
+    background: linear-gradient(45deg, #43A047, #66BB6A);
+    color: white;
+}
+
+.result-card.unsafe {
+    background: linear-gradient(45deg, #E53935, #EF5350);
+    color: white;
+}
+
+.result-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.result-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.result-message {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.details-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+}
+
+.details-title {
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.details-list {
+    list-style: none;
+    padding: 0;
+}
+
+.details-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details-item:last-child {
+    border-bottom: none;
+}
+
+.loading-spinner {
+    display: none;
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--primary-light);
+    border-top: 5px solid var(--primary-dark);
+    border-radius: 50%;
+    margin: 2rem auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .phishing-container {
+        padding: 1rem;
+    }
+
+    .phishing-title {
+        font-size: 2rem;
+    }
+
+    .input-section, .result-section {
+        padding: 1.5rem;
+    }
+
+    .result-title {
+        font-size: 1.5rem;
+    }
+} 

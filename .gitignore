@@ -1,0 +1,119 @@
+# --- Python byte-compiled / cache ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+*.pyd
+
+# --- Distribution / packaging ---
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- Virtual environments ---
+.venv
+venv/
+ENV/
+env/
+.env
+.env.*
+senv/
+pip-wheel-metadata/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# --- Unit test / coverage ---
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# --- Typing / analysis ---
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# --- Framework / app specifics ---
+instance/
+.webassets-cache
+*.db
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Local databases
+user_data.db
+extension_stats.db
+ddos_protection.db
+
+# Generated reports
+static/reports/
+
+# Local datasets (not for version control)
+#dataset.csv
+#dataset123.csv
+#dataseeeeet.csv
+#output.csv
+
+# Model artifacts
+*.h5
+
+# --- OS / Editor / Tooling ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+.vscode/
+.idea/
+*.iml
+
+# Jupyter
+.ipynb_checkpoints/
+
+# --- Node/JS (for browser extension etc.) ---
+node_modules/
+*.npmrc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Chrome extension build artifacts
+extension/*.zip
+extension/*.crx

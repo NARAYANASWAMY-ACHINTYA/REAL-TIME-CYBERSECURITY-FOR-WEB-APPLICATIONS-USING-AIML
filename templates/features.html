@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Real-Time Cybersecurity - Advanced AI & ML-powered web security features" />
+    <meta name="author" content="Real-Time Cybersecurity Team" />
+    <title>Features - Real-Time Cybersecurity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --dark-color: #1a1b26;
+            --light-color: #f8f9fa;
+            --success-color: #4caf50;
+            --warning-color: #ff9800;
+            --danger-color: #f44336;
+            --text-color: #333;
+            --text-light: #6c757d;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            padding: 1rem 0;
+            transition: var(--transition);
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .navbar-brand:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-color);
+            margin: 0 0.5rem;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 8rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Feature Section Styles */
+        .feature-section {
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .feature-section:nth-child(odd) {
+            background-color: var(--light-color);
+        }
+        
+        .feature-section:nth-child(even) {
+            background-color: white;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+        }
+        
+        .feature-section:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 30px rgba(67, 97, 238, 0.3);
+        }
+        
+        .feature-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        .feature-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .feature-list li i {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            margin-top: 0.3rem;
+            font-size: 1.2rem;
+        }
+        
+        .btn-feature {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .btn-feature i {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .btn-feature:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-feature:hover i {
+            transform: translateX(5px);
+        }
+        
+        .feature-image {
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+        
+        .feature-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-image img {
+            width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+        
+        .feature-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 991.98px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .feature-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .hero {
+                padding: 6rem 0 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .feature-section {
+                padding: 3rem 0;
+            }
+            
+            .feature-image {
+                margin-top: 2rem;
+            }
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">Real-Time Cybersecurity</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('project') }}">Project</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Team</a>
+                    </li>
+                  
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center hero-content">
+                    <h1 class="fade-in">Our Advanced Security Features</h1>
+                    <p class="fade-in">Discover our comprehensive suite of AI & ML-powered security solutions designed to protect your digital assets from sophisticated cyber threats.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phishing Detection Section -->
+    <section class="feature-section" id="ann">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h2 class="feature-title">Phishing Detection</h2>
+                    <p class="feature-description">Our advanced phishing detection system uses cutting-edge AI algorithms to identify and block sophisticated phishing attempts before they can compromise your sensitive data.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Real-time URL analysis and classification</li>
+                        <li><i class="fas fa-check-circle"></i> Machine learning-based threat detection</li>
+                        <li><i class="fas fa-check-circle"></i> Continuous model updates for new phishing patterns</li>
+                        <li><i class="fas fa-check-circle"></i> Detailed threat reports and analytics</li>
+                    </ul>
+                    <a href="/ANN" class="btn btn-feature">Try Phishing Detection <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <div class="feature-image">
+                        <img src="{{ url_for('static', filename='phishing-detection.jpg') }}" alt="Phishing Detection Illustration">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vulnerability Scanner Section -->
+    <section class="feature-section" id="vuln">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2 fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h2 class="feature-title">Vulnerability Scanner</h2>
+                    <p class="feature-description">Our comprehensive vulnerability scanner performs thorough security assessments of your applications, identifying potential weaknesses before attackers can exploit them.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Automated security testing and analysis</li>
+                        <li><i class="fas fa-check-circle"></i> Detection of common web vulnerabilities</li>
+                        <li><i class="fas fa-check-circle"></i> Detailed reports with remediation recommendations</li>
+                        <li><i class="fas fa-check-circle"></i> Continuous monitoring and alerting</li>
+                    </ul>
+                    <a href="/vulnerability" class="btn btn-feature">Try Vulnerability Scanner <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="col-lg-6 order-lg-1 fade-in">
+                    <div class="feature-image">
+                        <img src="{{ url_for('static', filename='vulnerability-scanner.png') }}" alt="Vulnerability Scanner Illustration">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DDoS Protection Section -->
+    <section class="feature-section" id="ddos">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h2 class="feature-title">DDoS Protection</h2>
+                    <p class="feature-description">Our robust DDoS protection system defends your web applications against distributed denial of service attacks, ensuring continuous availability even during sophisticated attack campaigns.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Real-time traffic analysis and filtering</li>
+                        <li><i class="fas fa-check-circle"></i> Automatic mitigation of attack traffic</li>
+                        <li><i class="fas fa-check-circle"></i> Scalable infrastructure to handle large-scale attacks</li>
+                        <li><i class="fas fa-check-circle"></i> Detailed attack analytics and reporting</li>
+                    </ul>
+                    <a href="/ddos" class="btn btn-feature">Try DDoS Protection <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <div class="feature-image">
+                        <img src="{{ url_for('static', filename='ddos-protection.png') }}" alt="DDoS Protection Illustration">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Browser Extension Section -->
+    <section class="feature-section" id="extension">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2 fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-browser"></i>
+                    </div>
+                    <h2 class="feature-title">Browser Extension</h2>
+                    <p class="feature-description">Enhance your browsing security with our powerful browser extension that provides real-time protection against malicious websites and instant threat notifications.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Real-time website reputation checking</li>
+                        <li><i class="fas fa-check-circle"></i> Automatic blocking of malicious sites</li>
+                        <li><i class="fas fa-check-circle"></i> Secure browsing recommendations</li>
+                        <li><i class="fas fa-check-circle"></i> Privacy protection features</li>
+                    </ul>
+                    <a href="/extension" class="btn btn-feature">Try Browser Extension <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="col-lg-6 order-lg-1 fade-in">
+                    <div class="feature-image">
+                        <img src="{{ url_for('static', filename='browser-extension.png') }}" alt="Browser Extension Illustration">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2>Ready to Enhance Your Security?</h2>
+                <p>Get started today with our comprehensive security solutions and protect your digital assets from sophisticated cyber threats.</p>
+                <a href="/features" class="btn btn-feature">Get Started Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-logo">Real-Time Cybersecurity</div>
+                    <p class="footer-description">
+                        Advanced AI & ML-powered web security solutions designed to protect your digital assets in real-time from sophisticated cyber threats.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://x.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/NARAYANASWAMY-ACHINTYA/Real-Time-Cybersecurity-Using-AIML" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/features">Features</a></li>
+                        <li><a href="{{ url_for('project') }}">Project</a></li>
+                        <li><a href="/contact">Team</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-title">Features</h5>
+                    <ul class="footer-links">
+                        <li><a href="/ANN">Phishing Detection</a></li>
+                        <li><a href="/vulnerability">Vulnerability Scanner</a></li>
+                        <li><a href="/ddos">DDoS Protection</a></li>
+                        <li><a href="/extension">Browser Extension</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="footer-title">Contact Us</h5>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope me-2"></i> info@realtimecybersecurity.com</li>
+                        <li><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Security Street, Cyber City, 12345</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Real-Time Cybersecurity. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Animation Script -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+    </script>
+</body>
+</html>

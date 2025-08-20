@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Real-Time Cybersecurity Phishing Detector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 10px;
+      width: 300px;
+    }
+    #result, #manual-result {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    input {
+      width: 100%;
+      padding: 5px;
+      margin-top: 10px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <h1>Check URL</h1>
+  <div id="result">Loading...</div>
+  <hr>
+  <h3>Manually Check a URL</h3>
+  <input id="manual-url" type="text" placeholder="Enter URL (e.g., https://example.com)" />
+  <button id="check-url">Check</button>
+  <div id="manual-result"></div>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-Time Cybersecurity - Advanced DDoS Protection using AI & ML" />
+    <meta name="author" content="Real-Time Cybersecurity Team" />
+    <title>DDoS Protection - Real-Time Cybersecurity</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --dark-color: #1a1b26;
+            --light-color: #f8f9fa;
+            --success-color: #4caf50;
+            --warning-color: #ff9800;
+            --danger-color: #f44336;
+            --text-color: #333;
+            --text-light: #6c757d;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            padding: 1rem 0;
+            transition: var(--transition);
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-color);
+            margin: 0 0.5rem;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 8rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Protection Control Section */
+        .protection-control {
+            padding: 4rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .status-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            margin-bottom: 2rem;
+        }
+        
+        .status-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .protection-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-switch .form-check-input {
+            width: 3.5em;
+            height: 2em;
+            cursor: pointer;
+        }
+        
+        .form-switch .form-check-input:checked {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+        }
+        
+        .toggle-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-left: 1rem;
+        }
+
+        /* Statistics Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: var(--light-color);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        /* Real-time Monitor Section */
+        .monitor-section {
+            padding: 4rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .log-container {
+            background: var(--dark-color);
+            border-radius: 15px;
+            padding: 1.5rem;
+            height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+        
+        .log-entry {
+            padding: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+                /* Footer */
+                footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 991.98px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .hero {
+                padding: 6rem 0 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stat-card {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">Real-Time Cybersecurity</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('project') }}">Project</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Team</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="fade-in">DDoS Protection</h1>
+                    <p class="fade-in">Advanced real-time protection against distributed denial of service attacks using AI-powered traffic analysis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Protection Control Section -->
+    <section class="protection-control">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="status-card fade-in">
+                        <div class="protection-toggle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="protectionToggle" 
+                                       {% if stats.protection_enabled %}checked{% endif %}>
+                                <label class="toggle-label" for="protectionToggle">
+                                    DDoS Protection
+                                </label>
+                            </div>
+                        </div>
+                        <div id="statusMessage" class="alert" role="alert" style="display: none;"></div>
+                        <div class="protection-status mt-4">
+                            <h5>Current Status:</h5>
+                            <div id="protectionStatus" class="alert alert-success">
+                                Protection is {{ 'Active' if stats.protection_enabled else 'Inactive' }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="text-center mb-5 fade-in">Protection Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">HTTP Flood Protection</h3>
+                    <p>Advanced monitoring and filtering of HTTP requests to prevent application layer DDoS attacks.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="feature-title">TCP SYN Flood Protection</h3>
+                    <p>Monitors and prevents TCP SYN flood attacks by tracking half-open connections.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Rate Limiting</h3>
+                    <p>Intelligent per-IP rate limiting with automatic threshold adjustment based on traffic patterns.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h3 class="feature-title">IP Blacklisting</h3>
+                    <p>Automatic detection and blocking of malicious IP addresses showing attack patterns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-logo">Real-Time Cybersecurity</div>
+                    <p class="footer-description">
+                        Advanced AI & ML-powered web security solutions designed to protect your digital assets in real-time.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://x.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/NARAYANASWAMY-ACHINTYA/Real-Time-Cybersecurity-Using-AIML" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/features">Features</a></li>
+                        <li><a href="{{ url_for('project') }}">Project</a></li>
+                        <li><a href="/contact">Team</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-title">Features</h5>
+                    <ul class="footer-links">
+                        <li><a href="/ANN">Phishing Detection</a></li>
+                        <li><a href="/vulnerability">Vulnerability Scanner</a></li>
+                        <li><a href="/ddos">DDoS Protection</a></li>
+                        <li><a href="/extension">Browser Extension</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="footer-title">Contact Us</h5>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope me-2"></i> info@realtimecybersecurity.com</li>
+                        <li><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Security Street, Cyber City, 12345</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Real-Time Cybersecurity. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            });
+            
+            fadeElements.forEach(element => observer.observe(element));
+        });
+
+        // Protection Toggle Functionality
+        const protectionToggle = document.getElementById('protectionToggle');
+        const statusMessage = document.getElementById('statusMessage');
+        const protectionStatus = document.getElementById('protectionStatus');
+        const logOutput = document.getElementById('logOutput');
+
+        function showMessage(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = `alert alert-${type}`;
+            statusMessage.style.display = 'block';
+            setTimeout(() => {
+                statusMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        function updateProtectionStatus(enabled) {
+            protectionStatus.className = `alert alert-${enabled ? 'success' : 'danger'}`;
+            protectionStatus.textContent = `Protection is ${enabled ? 'Active' : 'Inactive'}`;
+        }
+
+        function addLogEntry(message, type = 'info') {
+            const entry = document.createElement('div');
+            entry.className = `log-entry text-${type}`;
+            entry.innerHTML = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logOutput.insertBefore(entry, logOutput.firstChild);
+
+            // Keep only last 50 entries
+            while (logOutput.children.length > 50) {
+                logOutput.removeChild(logOutput.lastChild);
+            }
+        }
+
+        protectionToggle.addEventListener('change', function(event) {
+            event.preventDefault();
+            const currentState = protectionToggle.checked;
+            
+            fetch('/ddos/toggle', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    protectionToggle.checked = data.enabled;
+                    updateProtectionStatus(data.enabled);
+                    showMessage(data.message, 'success');
+                    addLogEntry(`DDoS Protection ${data.enabled ? 'enabled' : 'disabled'}`, 'success');
+                } else {
+                    throw new Error(data.message || 'Failed to update protection status');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                protectionToggle.checked = currentState;
+                showMessage('Failed to update protection status: ' + error.message, 'danger');
+                addLogEntry('Failed to update protection status', 'danger');
+            });
+        });
+
+        // Real-time stats update
+        function updateStats() {
+            fetch('/ddos/stats')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        document.getElementById('blockedRequests').textContent = data.stats.blocked_ips;
+                        document.getElementById('activeConnections').textContent = data.stats.half_open_connections;
+                        
+                        if (data.stats.under_attack) {
+                            addLogEntry('⚠️ Attack detected! Blocking malicious traffic...', 'warning');
+                        }
+                    }
+                })
+                .catch(error => console.error('Error updating stats:', error));
+        }
+
+        // Update stats every 5 seconds
+        setInterval(updateStats, 5000);
+        
+        // Initial stats update
+        updateStats();
+    </script>
+</body>
+</html>
